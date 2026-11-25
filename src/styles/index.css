@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-sage: #b8d1b9;
+  --color-mint: #d9e9d8;
+  --color-forest: #527d56;
+  --color-leaf: #83b85d;
+  --color-cream: #f7f6f0;
+  --color-peach: #eba77f;
+  --color-sky: #b8dde5;
+  --color-brown: #94775c;
+  --color-deep: #35543d;
+  --color-ink: #26332a;
+  --color-muted: #6b776d;
+  --color-line: #e6e6dc;
+
+  --font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', 'Fraunces', ui-serif, Georgia, serif;
+
+  --shadow-soft: 0 1px 2px rgba(38, 51, 42, 0.04), 0 8px 24px -8px rgba(38, 51, 42, 0.1);
+  --shadow-lift: 0 2px 4px rgba(38, 51, 42, 0.05), 0 18px 40px -12px rgba(38, 51, 42, 0.18);
+
+  --radius-card: 1.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    background: var(--color-cream);
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: 'SOFT' 100, 'WONK' 0;
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+  ::selection {
+    background: var(--color-mint);
+  }
+  input[type='range'] {
+    accent-color: var(--color-forest);
+  }
+}
+
+@utility card {
+  @apply rounded-[var(--radius-card)] bg-white shadow-[var(--shadow-soft)];
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[15px] font-semibold transition-all duration-200 select-none disabled:opacity-40 disabled:pointer-events-none active:scale-[0.97];
+}
+@utility btn-primary {
+  @apply btn bg-deep text-cream hover:bg-[#2b4632] shadow-[0_8px_20px_-8px_rgba(53,84,61,0.6)];
+}
+@utility btn-soft {
+  @apply btn bg-mint text-deep hover:bg-[#cde2cb];
+}
+@utility btn-ghost {
+  @apply btn bg-transparent text-deep hover:bg-black/[0.04];
+}
+@utility btn-danger {
+  @apply btn bg-[#B5574B] text-white hover:bg-[#9e4a3f];
+}
+@utility chip {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3.5 py-2 text-sm font-medium text-ink transition-all hover:border-sage active:scale-[0.97];
+}
+@utility chip-on {
+  @apply border-forest bg-mint text-deep;
+}
+@utility field {
+  @apply w-full rounded-2xl border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-muted/70 outline-none transition focus:border-sage focus:ring-4 focus:ring-mint;
+}
+@utility label {
+  @apply text-[11px] font-bold uppercase tracking-[0.14em] text-muted;
+}
+
+/* A calm backdrop behind the garden */
+.garden-backdrop {
+  background:
+    radial-gradient(60% 55% at 50% 45%, rgba(217, 233, 216, 0.85), rgba(247, 246, 240, 0) 70%),
+    radial-gradient(40% 30% at 80% 15%, rgba(184, 221, 229, 0.45), rgba(247, 246, 240, 0) 70%),
+    radial-gradient(35% 25% at 15% 85%, rgba(235, 167, 127, 0.14), rgba(247, 246, 240, 0) 70%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
