@@ -69,7 +69,7 @@ Tip: after onboarding, **Profile → Add sample activity (demo)** fills the gard
 
 The project ships with a ready-made workflow at `.github/workflows/deploy.yml`.
 
-1. **Create a repository** on GitHub (for example `bloom`) and push this project to its `main` branch:
+1. **Create a public repository** on GitHub (for example `bloom`) and push this project to its `main` branch:
    ```bash
    git init
    git add .
@@ -78,9 +78,9 @@ The project ships with a ready-made workflow at `.github/workflows/deploy.yml`.
    git remote add origin https://github.com/<your-username>/<your-repo>.git
    git push -u origin main
    ```
-2. In the repository go to **Settings → Pages** and under **Build and deployment → Source** choose **GitHub Actions**.
-3. The workflow runs automatically on every push to `main` (you can also start it from the **Actions** tab → *Deploy BLOOM to GitHub Pages* → *Run workflow*).
-4. When it finishes, your app is live at
+2. The workflow runs automatically on every push to `main` (or from **Actions → Deploy BLOOM to GitHub Pages → Run workflow**). It builds the app and publishes it to the `gh-pages` branch.
+3. In **Settings → Pages**, make sure **Source** is **Deploy from a branch**, with branch **gh-pages** and folder **/ (root)**. (GitHub usually selects this automatically the first time a `gh-pages` branch appears.)
+4. A minute later your app is live at
    `https://<your-username>.github.io/<your-repo>/`
 
 ### About the base path
